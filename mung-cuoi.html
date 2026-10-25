@@ -6,7 +6,7 @@ body{font-family:'Lora',Georgia,serif;font-size:14px;line-height:1.9;-webkit-fon
 header .names,h1{font-family:'Great Vibes',cursive}
 .eyebrow,.back,.muted{font-family:'Be Vietnam Pro',Arial,sans-serif}
 
-.qr-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:18px auto 8px}.action{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:30px;border:1px solid var(--wine);background:var(--wine);color:white;font:600 13px 'Be Vietnam Pro',Arial,sans-serif;cursor:pointer;text-decoration:none;min-height:44px}.action.secondary{background:#fff;color:var(--wine)}.action:focus-visible{outline:3px solid #b38d5c;outline-offset:3px}.status{min-height:1.6em;font-size:13px;color:var(--wine)}.account-number{user-select:all;-webkit-user-select:all;white-space:nowrap}.save-note{font-size:12px;color:#7a6266;margin:5px auto 20px;max-width:520px}</style></head><body><header><div class="names">Thành Công &amp; Bảo Ngân</div><div class="eyebrow">27 · 11 · 2026</div></header><main><div class="eyebrow">WITH LOVE</div><h1>Gửi mừng cưới</h1><p>Chúng mình trân trọng mọi tình cảm và lời chúc tốt đẹp của bạn.<br/>Nếu muốn gửi quà mừng từ xa, bạn có thể sử dụng mã QR bên dưới.</p><a class="back" href="index.html#loi-ket">← Quay lại thiệp cưới</a><div class="panel"><img class="qr" src="images/qr-mung-cuoi.png" alt="Mã QR Vietcombank của Nguyễn Thành Công"/><div class="details"><strong>Nguyễn Thành Công</strong><div>Ngân hàng Vietcombank</div><div>Số tài khoản: <strong class="account-number" id="account-number">0091000616452</strong></div></div></div><div class="qr-actions"><button type="button" class="action" id="copy-account">Sao chép số tài khoản</button><button type="button" class="action secondary" id="save-qr">Lưu ảnh QR</button></div><p id="qr-status" class="status" role="status" aria-live="polite"></p><p class="save-note">Trên iPhone, nếu ảnh được mở trong tab mới, hãy nhấn giữ ảnh và chọn “Lưu vào Ảnh”. Bạn cũng có thể dùng nút Chia sẻ → Lưu hình ảnh nếu iPhone hỗ trợ.</p><p class="muted">Vui lòng kiểm tra đúng tên người nhận trong ứng dụng ngân hàng trước khi chuyển khoản.</p><a class="back" href="index.html#loi-ket">← Quay lại thiệp cưới</a></main><script>
+.qr-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:18px auto 8px}.action{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:30px;border:1px solid var(--wine);background:var(--wine);color:white;font:600 13px 'Be Vietnam Pro',Arial,sans-serif;cursor:pointer;text-decoration:none;min-height:44px}.action.secondary{background:#fff;color:var(--wine)}.action:focus-visible{outline:3px solid #b38d5c;outline-offset:3px}.status{min-height:1.6em;font-size:13px;color:var(--wine)}.account-number{user-select:all;-webkit-user-select:all;white-space:nowrap}.save-note{font-size:12px;color:#7a6266;margin:5px auto 20px;max-width:520px}</style></head><body><header><div class="names">Thành Công &amp; Bảo Ngân</div><div class="eyebrow">27 · 11 · 2026</div></header><main><div class="eyebrow">WITH LOVE</div><h1>Gửi mừng cưới</h1><p>Chúng mình trân trọng mọi tình cảm và lời chúc tốt đẹp của bạn.<br/>Nếu muốn gửi quà mừng từ xa, bạn có thể sử dụng mã QR bên dưới.</p><a class="back" href="index.html#loi-ket">← Quay lại thiệp cưới</a><div class="panel"><img class="qr" src="images/qr-mung-cuoi.png" alt="Mã QR Vietcombank của Nguyễn Thành Công"/><div class="details"><strong>Nguyễn Thành Công</strong><div>Ngân hàng Vietcombank</div><div>Số tài khoản: <strong class="account-number" id="account-number">0091000616452</strong></div></div></div><div class="qr-actions"><button type="button" class="action" id="copy-account">Sao chép số tài khoản</button><button type="button" class="action secondary" id="save-qr">Lưu ảnh QR</button></div><p id="qr-status" class="status" role="status" aria-live="polite"></p><p class="save-note">Trên iPhone: nhấn “Lưu ảnh QR” để mở ảnh, sau đó nhấn giữ ảnh và chọn “Lưu vào Ảnh”. Trên Android hoặc máy tính, ảnh sẽ được tải xuống nếu trình duyệt hỗ trợ.</p><p class="muted">Vui lòng kiểm tra đúng tên người nhận trong ứng dụng ngân hàng trước khi chuyển khoản.</p><a class="back" href="index.html#loi-ket">← Quay lại thiệp cưới</a></main><script>
 const account='0091000616452';
 const statusEl=document.getElementById('qr-status');
 function status(message){statusEl.textContent=message;}
@@ -17,17 +17,20 @@ document.getElementById('copy-account').addEventListener('click',async()=>{
     status('Đã sao chép số tài khoản: '+account);
   }catch(e){status('Không thể tự động sao chép. Hãy nhấn giữ số tài khoản ở trên để sao chép.');}
 });
-document.getElementById('save-qr').addEventListener('click',async()=>{
- const url='images/qr-mung-cuoi.png';
- try{
-   const response=await fetch(url);if(!response.ok)throw Error('fetch');
-   const blob=await response.blob();const file=new File([blob],'QR-Mung-Cuoi-Cong-Ngan.png',{type:'image/png'});
-   if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
-     try{await navigator.share({files:[file],title:'QR mừng cưới Thành Công & Bảo Ngân'});status('Bạn có thể chọn Lưu hình ảnh trong bảng chia sẻ.');return;}
-     catch(e){if(e.name==='AbortError')return;}
-   }
-   const blobUrl=URL.createObjectURL(blob);const a=document.createElement('a');a.href=blobUrl;a.download='QR-Mung-Cuoi-Cong-Ngan.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(blobUrl),30000);
-   status('Đã yêu cầu tải ảnh QR. Nếu iPhone chỉ mở ảnh, hãy nhấn giữ ảnh để lưu.');
- }catch(e){window.open(url,'_blank','noopener');status('Ảnh QR đã được mở. Nhấn giữ ảnh và chọn Lưu vào Ảnh.');}
+document.getElementById('save-qr').addEventListener('click',()=>{
+  const url='images/qr-mung-cuoi.png';
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  if(isIOS){
+    // Open the actual PNG in a new tab on the user's tap. Safari permits long-press Save to Photos.
+    const opened=window.open(url,'_blank');
+    if(opened){status('Ảnh QR đã mở ở tab mới. Nhấn giữ ảnh và chọn “Lưu vào Ảnh”.');}
+    else{window.location.href=url;}
+    return;
+  }
+  // Prefer a direct same-origin download on Android and desktop, no share sheet.
+  const a=document.createElement('a');
+  a.href=url;a.download='QR-Mung-Cuoi-Cong-Ngan.png';
+  document.body.appendChild(a);a.click();a.remove();
+  status('Đã yêu cầu tải ảnh QR. Kiểm tra mục Tệp đã tải xuống trên thiết bị.');
 });
 </script></body></html>
