@@ -1,0 +1,4 @@
+V16: Đã thay ảnh bìa mobile bằng ảnh mới người dùng cung cấp. Giữ các nội dung khác từ V15.
+Mở index.html để xem; khi đăng tải, upload toàn bộ thư mục images.
+
+V17: Da them nhac nen audio/duong-ve-hai-thon-lofi.mp3. Nhan MO THIEP hoac nut nhac de phat.
